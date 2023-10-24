@@ -9,67 +9,72 @@ public class tictactoe
 {
     int boardState = 0;
     int tile = 1;
-    boolean playerTurn = false;
+    int c = 0;
+    int t = 0;
+    boolean won = false;
     String player1 = "";
     String player2 = "";
     String[] bState;
 
     public static void main(String args[]){
         tictactoe g = new tictactoe();
-        g.getNames();  
-        System.out.print("\n");
+        g.getNames();
         g.drawBoard();
         g.beginGame();
+        g.turn();
 
     }
+
     public void getNames() {
         Scanner in = new Scanner(System.in);
-        System.out.printf("Enter the name of player 1: ");
+        System.out.printf("Enter the name of player x: ");
         player1 = in.nextLine();
-        System.out.printf("Enter the name of player 2: ");
+        System.out.printf("Enter the name of player o: ");
         player2 = in.nextLine();
+
     }
 
     public void drawBoard() {
-        bState = new String [32];
-        for(int i = 0; i < bState.length; i++){
-            if(i % 6 != 0){
-                if(i > 6 && i < 12 || i > 18 && i < 21) {
-                    bState[i] = "-";
-                } else if(i % 2 != 0) {
-                    bState[i] = "|";
-                } else{
-                    bState[i] = Integer.toString(tile);
-                    tile++;
-                }
-            }else {
-                bState[i]="\n";
-            }
-            System.out.printf(bState[i]);
-        }
-
-        /*
-        if(boardState == 0){
-        System.out.println("   1|2|3");
-        System.out.println("   -----");
-        System.out.println("   4|5|6");
-        System.out.println("   -----");
-        System.out.println("   7|8|9\n");
-        }
-        if(boardState == 1){
-
-        }
-         */
+        bState = new String [9];
+        System.out.printf("%s|%s|%s|/n", bState[0], bState[1], bState[3]);
+        System.out.printf("%s|%s|%s|/n", bState[4], bState[5], bState[6]);
+        System.out.printf("%s|%s|%s|/n", bState[7], bState[8], bState[9]);
     }
 
     public void beginGame() {
         double rand = (Math.random() * 10.0);
         if (rand >= 5){
-            playerTurn = true;
-            System.out.printf("It is %s's turn", player1);
+            System.out.printf("\n\nIt is %s's turn\n", player1);
+            t = 1;
         } else {
-            System.out.printf("It is %s's turn", player2 );
+            System.out.printf("\n\nIt is %s's turn\n", player2);
+            t = 2;
         }
+    }
+
+    public void turn(){
+        Scanner in = new Scanner(System.in);
+        int choice = 0;
+        do{
+            System.out.printf("Please input the number you wish to play\n");
+            try {
+                choice = Integer.parseInt(in.nextLine());
+            }
+            catch(NumberFormatException e){
+                System.out.print("Please input a number");
+            }
+
+            if (choice < 9 || choice > 1){
+                if (t == 1){
+                    
+                } else {
+                    
+                }
+            } else{
+                System.out.print("Please pick a number between 1 and 9");
+            }
+        }while(won == false);
+
     }
 
 }
