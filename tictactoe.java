@@ -37,7 +37,9 @@ public class tictactoe
     public void drawBoard() {
         bState = new String [9];
         System.out.printf("%s|%s|%s|/n", bState[0], bState[1], bState[3]);
+        System.out.printf("-----");
         System.out.printf("%s|%s|%s|/n", bState[4], bState[5], bState[6]);
+        System.out.printf("-----");
         System.out.printf("%s|%s|%s|/n", bState[7], bState[8], bState[9]);
     }
 
