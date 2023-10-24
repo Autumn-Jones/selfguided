@@ -14,11 +14,12 @@ public class tictactoe
     boolean won = false;
     String player1 = "";
     String player2 = "";
-    String[] bState;
+    String[] bState = new String [10];
 
     public static void main(String args[]){
         tictactoe g = new tictactoe();
         g.getNames();
+        g.init();
         g.drawBoard();
         g.beginGame();
         g.turn();
@@ -31,25 +32,31 @@ public class tictactoe
         player1 = in.nextLine();
         System.out.printf("Enter the name of player o: ");
         player2 = in.nextLine();
-
+        
+    }
+    
+    public void init(){
+        for(int i = 1; i < bState.length; i++){
+            bState[i-1] = Integer.toString(i);
+        }
     }
 
     public void drawBoard() {
-        bState = new String [9];
-        System.out.printf("%s|%s|%s|/n", bState[0], bState[1], bState[3]);
-        System.out.printf("-----");
-        System.out.printf("%s|%s|%s|/n", bState[4], bState[5], bState[6]);
-        System.out.printf("-----");
-        System.out.printf("%s|%s|%s|/n", bState[7], bState[8], bState[9]);
+        System.out.printf("\n");
+        System.out.printf("   %s|%s|%s\n", bState[0], bState[1], bState[2]);
+        System.out.printf("   -----\n");
+        System.out.printf("   %s|%s|%s\n", bState[3], bState[4], bState[5]);
+        System.out.printf("   -----\n");
+        System.out.printf("   %s|%s|%s\n", bState[6], bState[7], bState[8]);
     }
 
     public void beginGame() {
         double rand = (Math.random() * 10.0);
         if (rand >= 5){
-            System.out.printf("\n\nIt is %s's turn\n", player1);
+            System.out.printf("\nIt is %s's turn\n", player1);
             t = 1;
         } else {
-            System.out.printf("\n\nIt is %s's turn\n", player2);
+            System.out.printf("\nIt is %s's turn\n", player2);
             t = 2;
         }
     }
